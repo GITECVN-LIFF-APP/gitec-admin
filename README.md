@@ -4,7 +4,7 @@
 
 <h1 align="center">Gitec Admin</h1>
 <p align="center">
-<b>react-material-admin</b> is a free and open-source admin  application including many real-world examples. It is based on React and Material-UI.
+<b>gitec-admin</b> is a free and open-source admin  application including many real-world examples. It is based on React and Material-UI.
 </p>
 
 [![gitec-admin-demo](https://cdn.dribbble.com/users/6538082/screenshots/15805144/media/5687464c7190019afb748863ac6957d3.png?compress=1&resize=1200x900)](https://github.com/GITECVN-LIFF-APP/gitec-admin)
