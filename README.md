@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://m6v3l9.github.io/react-material-admin/" rel="noopener" target="_blank"><img width="120" src="https://m6v3l9.github.io/react-material-admin/logo.svg" alt="React Material Admin logo"></a></p>
+  <a href="https://github.com/GITECVN-LIFF-APP/gitec-admin" rel="noopener" target="_blank"><img width="120" src="https://github.com/GITECVN-LIFF-APP/gitec-admin/blob/develop/src/core/assets/logo.svg" alt="Gitec Admin logo"></a></p>
 </p>
 
 <h1 align="center">Gitec Admin</h1>
@@ -7,7 +7,7 @@
 <b>react-material-admin</b> is a free and open-source admin  application including many real-world examples. It is based on React and Material-UI.
 </p>
 
-[![react-material-admin-demo](https://cdn.dribbble.com/users/6538082/screenshots/15805144/media/5687464c7190019afb748863ac6957d3.png?compress=1&resize=1200x900)](https://m6v3l9.github.io/react-material-admin/)
+[![gitec-admin-demo](https://cdn.dribbble.com/users/6538082/screenshots/15805144/media/5687464c7190019afb748863ac6957d3.png?compress=1&resize=1200x900)](https://github.com/GITECVN-LIFF-APP/gitec-admin)
 
 ## Getting Started
 
