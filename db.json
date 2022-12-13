@@ -1,0 +1,112 @@
+{
+  "users": [
+    {
+      "id": 2,
+      "name": "Maryse Goodwin",
+      "email": "admin@example.com"
+    },
+    {
+      "email": "admin@example.com",
+      "password": "$2a$10$MxpKD/rvp1VUUovgE6mHaugNv4Q5R6xOWS6dRxImPh9Sxq69.wt0G",
+      "id": 1
+    }
+  ],
+  "events": [
+    {
+      "id": 1,
+      "title": "Priority clean",
+      "start": "2022-12-13T16:48:39.122Z",
+      "end": "2022-12-14T16:48:39.122Z",
+      "allDay": true,
+      "type": "clean",
+      "createAt": "2022-03-21T16:48:39.122Z",
+      "updatedAt": "2022-03-22T03:49:25.020Z",
+      "userId": 2,
+      "color": "grey"
+    },
+    {
+      "id": 1,
+      "title": "Priority clean",
+      "start": "2022-12-13T16:48:39.122Z",
+      "end": "2022-12-15T16:48:39.122Z",
+      "allDay": true,
+      "type": "clean",
+      "createAt": "2022-03-21T16:48:39.122Z",
+      "updatedAt": "2022-03-22T03:49:25.020Z",
+      "userId": 2,
+      "color": "green"
+    },
+    {
+      "id": 1,
+      "title": "Priority clean",
+      "start": "2022-12-14T16:48:39.122Z",
+      "end": "2022-12-15T16:48:39.122Z",
+      "type": "clean",
+      "createAt": "2022-03-21T16:48:39.122Z",
+      "updatedAt": "2022-03-22T03:49:25.020Z",
+      "userId": 2,
+      "color": "green"
+    },
+    {
+      "id": 1,
+      "title": "Priority clean",
+      "start": "2022-12-15T16:00:39.122Z",
+      "end": "2022-12-15T16:48:39.122Z",
+      "service": {
+        "serviceName": "name",
+        "serviceId": "1"
+      },
+      "color": "red",
+      "createAt": "2022-03-21T16:48:39.122Z",
+      "updatedAt": "2022-03-22T03:49:25.020Z"
+    },
+    {
+      "id": 1,
+      "title": "Priority clean",
+      "start": "2022-03-21T16:48:39.122Z",
+      "end": "2022-03-21T16:48:39.122Z",
+      "allDay": true,
+      "type": "clean",
+      "createAt": "2022-03-21T16:48:39.122Z",
+      "updatedAt": "2022-03-22T03:49:25.020Z",
+      "userId": 2,
+      "color": "yellow"
+    },
+    {
+      "id": 1,
+      "title": "Priority clean",
+      "start": "2022-03-21T16:48:39.122Z",
+      "end": "2022-03-21T16:48:39.122Z",
+      "allDay": true,
+      "type": "clean",
+      "createAt": "2022-03-21T16:48:39.122Z",
+      "updatedAt": "2022-03-22T03:49:25.020Z",
+      "userId": 2,
+      "color": "green"
+    },
+    {
+      "title": "test",
+      "start_date": "",
+      "end_date": "",
+      "user_id": 1,
+      "start": "2022-12-13T07:51",
+      "end": "2022-12-13T09:51",
+      "allDay": true,
+      "type": "Clean",
+      "color": "blue",
+      "id": 2
+    },
+    {
+      "title": "test1",
+      "start_date": "",
+      "end_date": "",
+      "user_id": 1,
+      "start": "2022-12-13T08:51",
+      "end": "2022-12-13T09:52",
+      "allDay": false,
+      "type": "Clean",
+      "color": "blue",
+      "id": 3
+    }
+  ]
+}
