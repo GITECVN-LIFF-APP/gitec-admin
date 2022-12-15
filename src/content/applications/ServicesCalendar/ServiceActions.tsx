@@ -5,11 +5,10 @@ import { mutate } from 'swr';
 import { useState, lazy } from 'react';
 import FormSetCalendar from 'src/components/FormSetCalendar';
 import { EVENTS_URL } from 'src/constants/url';
-import { updateEvent } from 'src/services/EventService';
+import { updateEvent, deleteEvent } from 'src/services/EventService';
 import { getData } from 'src/helpers/apiHandle';
 import useSWR, { useSWRConfig } from 'swr';
-// import DeleteDialog from '../DeleteDialog';
-// import { deleteCategory } from 'src/services/CategoryService';
+import DeleteDialog from 'src/components/DeleteDialog';
 interface IEvent {
   title: string;
   start: string;
@@ -25,6 +24,7 @@ const ServiceActions = ({ params, rowId, setRowId }) => {
   const [isAllDay, setIsAllDay] = useState(false);
   const [type, setType] = useState('');
   const [requesting, setRequesting] = useState<boolean>(false);
+  const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
   const [event, setEvent] = useState({
     title: '',
     start: '',
@@ -37,7 +37,7 @@ const ServiceActions = ({ params, rowId, setRowId }) => {
     id ? EVENTS_URL + id : null,
     getData
   );
-  console.log(eventFetch, event);
+
   const handleOpenEditModal = () => {
     setOpen(true);
     setId(params.id);
@@ -88,12 +88,6 @@ const ServiceActions = ({ params, rowId, setRowId }) => {
       // });
       mutate(EVENTS_URL);
       setOpen(false);
-      setEvent({
-        title: '',
-        start: '',
-        end: '',
-        user_id: 1
-      });
       setType('');
       setRequesting(false);
     } catch (error) {
@@ -105,6 +99,17 @@ const ServiceActions = ({ params, rowId, setRowId }) => {
     }
   };
 
+  const handelDelete = async (params) => {
+    await deleteEvent(params.id);
+    mutate(EVENTS_URL);
+  };
+  const handleCloseDeleteDialog = () => {
+    setOpenDeleteDialog(false);
+  };
+  const handleOpenDeleteDialog = () => {
+    setOpenDeleteDialog(true);
+  };
+
   return (
     <>
       <Box>
@@ -114,7 +119,7 @@ const ServiceActions = ({ params, rowId, setRowId }) => {
           </IconButton>
         </Tooltip>
         <Tooltip title="Xóa danh mục này">
-          <IconButton>
+          <IconButton onClick={handleOpenDeleteDialog}>
             <Delete />
           </IconButton>
         </Tooltip>
@@ -130,6 +135,12 @@ const ServiceActions = ({ params, rowId, setRowId }) => {
         setIsAllDay={setIsAllDay}
         isAllDay={isAllDay}
         requesting={requesting}
+      />
+      <DeleteDialog
+        open={openDeleteDialog}
+        name="blog"
+        handleClose={handleCloseDeleteDialog}
+        handleDelete={() => handelDelete(params)}
       />
     </>
   );

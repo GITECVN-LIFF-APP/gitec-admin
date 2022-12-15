@@ -88,6 +88,7 @@ const FormSetCalendar = ({
             <Grid item xs={12}>
               <Autocomplete
                 disablePortal
+                value={event.type}
                 id="combo-box-demo"
                 options={servicers}
                 onChange={(event, value) => setType(value)}
