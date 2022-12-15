@@ -9,7 +9,9 @@ import {
   IconButton,
   Tooltip,
   styled,
-  useTheme
+  useTheme,
+  FormControlLabel,
+  Switch
 } from '@mui/material';
 import MenuTwoToneIcon from '@mui/icons-material/MenuTwoTone';
 import { SidebarContext } from 'src/contexts/SidebarContext';
@@ -71,6 +73,12 @@ function Header() {
         <HeaderMenu />
       </Stack>
       <Box display="flex" alignItems="center">
+        <FormControlLabel
+          value="end"
+          control={<Switch color="primary" />}
+          label="Ja"
+          labelPlacement="end"
+        />
         <HeaderButtons />
         <HeaderUserbox />
         <Box

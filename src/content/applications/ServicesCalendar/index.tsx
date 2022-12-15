@@ -10,8 +10,10 @@ import ServiceTable from './ServiceTable';
 import { useState } from 'react';
 import FormSetCalendar from 'src/components/FormSetCalendar';
 import { createEvent } from 'src/services/EventService';
+import { useTranslation } from 'react-i18next';
 
 function ApplicationsTransactions() {
+  const { t } = useTranslation();
   const { mutate } = useSWRConfig();
   const [open, setOpen] = useState(false);
   const [servicers, setServicers] = useState(['Clean', 'Polish']);
@@ -26,7 +28,6 @@ function ApplicationsTransactions() {
   });
 
   const { data: events } = useSWR<[]>(EVENTS_URL, getData);
-  console.log('event', events);
   const handleClickOpenDialog = () => {
     setOpen(true);
   };

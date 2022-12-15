@@ -10,6 +10,7 @@ import { useRef, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 import ExpandMoreTwoToneIcon from '@mui/icons-material/ExpandMoreTwoTone';
+import { useTranslation } from 'react-i18next';
 
 const ListWrapper = styled(Box)(
   ({ theme }) => `
@@ -65,6 +66,7 @@ const ListWrapper = styled(Box)(
 function HeaderMenu() {
   const ref = useRef<any>(null);
   const [isOpen, setOpen] = useState<boolean>(false);
+  const { t } = useTranslation();
 
   const handleOpen = (): void => {
     setOpen(true);
@@ -129,16 +131,16 @@ function HeaderMenu() {
       </ListWrapper>
       <Menu anchorEl={ref.current} onClose={handleClose} open={isOpen}>
         <MenuItem sx={{ px: 3 }} component={NavLink} to="/overview">
-          Overview
+          {t('overview')}
         </MenuItem>
         <MenuItem sx={{ px: 3 }} component={NavLink} to="/components/tabs">
-          Tabs
+          {t('tabs')}
         </MenuItem>
         <MenuItem sx={{ px: 3 }} component={NavLink} to="/components/cards">
-          Cards
+          {t('cards')}
         </MenuItem>
         <MenuItem sx={{ px: 3 }} component={NavLink} to="/components/modals">
-          Modals
+          {t('modals')}
         </MenuItem>
       </Menu>
     </>

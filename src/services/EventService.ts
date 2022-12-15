@@ -8,19 +8,19 @@ export const createEvent = (data) => {
   });
 };
 
-export const updateBlog = (data, id) => {
+export const updateEvent = (data, id) => {
   return axios({
     method: 'put',
-    url: `/news/articles/${id}`,
+    url: `/events/${id}`,
     data: data
   });
 };
 
-export const deleteBlog = (id) => {
+export const deleteEvent = (id) => {
   const token = JSON.parse(localStorage.getItem('token') || 'null');
 
   return axios({
     method: 'delete',
-    url: `/news/articles/${id}`
+    url: `/events/${id}`
   });
 };

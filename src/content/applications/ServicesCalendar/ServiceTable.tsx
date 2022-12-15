@@ -2,7 +2,11 @@ import React, { useMemo, useState } from 'react';
 import { DataGrid, gridClasses } from '@mui/x-data-grid';
 import { Box, CircularProgress, Typography } from '@mui/material';
 import { grey } from '@mui/material/colors';
+import ServiceActions from './ServiceActions';
+import { useTranslation } from 'react-i18next';
+
 const ServiceTable = ({ events }) => {
+  const { t } = useTranslation();
   const [pageSize, setPageSize] = useState(20);
   const [rowId, setRowId] = useState(null);
   const rows = events === undefined ? [] : events;
@@ -10,18 +14,17 @@ const ServiceTable = ({ events }) => {
   const columns = useMemo(
     () => [
       { field: 'id', headerName: 'Id', width: 100 },
-      { field: 'title', headerName: 'title', width: 120 },
-      { field: 'start', headerName: 'start_date', width: 250 },
-      { field: 'end', headerName: 'end_date', width: 250 },
-      { field: 'type', headerName: 'type', width: 220 },
-      { field: 'allDay', headerName: 'is_all_day' },
+      { field: 'title', headerName: t('title'), width: 120 },
+      { field: 'start', headerName: t('start date'), width: 250 },
+      { field: 'end', headerName: t('end date'), width: 250 },
+      { field: 'type', headerName: t('type of service'), width: 220 },
+      { field: 'allDay', headerName: t('all day') },
       {
         field: 'actions',
-        headerName: 'Actions',
+        headerName: t('actions'),
         type: 'actions',
         renderCell: (params) => (
-          // <ActionCategoryArticleTable {...{ params, rowId, setRowId, page }} />
-          <></>
+          <ServiceActions {...{ params, rowId, setRowId }} />
         )
       }
     ],

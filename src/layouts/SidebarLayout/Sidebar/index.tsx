@@ -58,12 +58,16 @@ function Sidebar() {
           <Box mt={3}>
             <Box
               mx={2}
+              component="img"
               sx={{
-                width: 52
+                height: 233,
+                width: 350,
+                maxHeight: { xs: 233, md: 70 },
+                maxWidth: { xs: 350, md: 250 }
               }}
-            >
-              <Logo />
-            </Box>
+              alt="The house from the offer."
+              src="/img_logo.png"
+            ></Box>
           </Box>
           <Divider
             sx={{

@@ -1,20 +1,16 @@
 import { Typography, Button, Grid } from '@mui/material';
 
 import AddTwoToneIcon from '@mui/icons-material/AddTwoTone';
+import { useTranslation } from 'react-i18next';
 
 function PageHeader({ handleClickOpenDialog }) {
-  const user = {
-    name: 'Catherine Pike',
-    avatar: '/static/images/avatars/1.jpg'
-  };
+  const { t } = useTranslation();
+
   return (
     <Grid container justifyContent="space-between" alignItems="center">
       <Grid item>
         <Typography variant="h3" component="h3" gutterBottom>
-          List user register services
-        </Typography>
-        <Typography variant="subtitle2">
-          {user.name}, these are your recent transactions
+          {t('list of users registered for the service')}
         </Typography>
       </Grid>
       <Grid item>
@@ -24,7 +20,7 @@ function PageHeader({ handleClickOpenDialog }) {
           startIcon={<AddTwoToneIcon fontSize="small" />}
           onClick={handleClickOpenDialog}
         >
-          Create calendar
+          {t('create calendar')}
         </Button>
       </Grid>
     </Grid>

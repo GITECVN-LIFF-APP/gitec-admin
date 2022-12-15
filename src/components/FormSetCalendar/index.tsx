@@ -14,6 +14,7 @@ import {
 } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -38,18 +39,19 @@ const FormSetCalendar = ({
   setIsAllDay,
   requesting
 }) => {
+  const { t } = useTranslation();
   const classes = useStyles();
 
   return (
     <Dialog open={open} onClose={handleClose} maxWidth="xl">
-      <DialogTitle>Set calendar</DialogTitle>
+      <DialogTitle>{t('Set calendar')}</DialogTitle>
       <form className={classes.root} onSubmit={handleSubmit}>
         <DialogContent>
           <Grid container spacing={3}>
             <Grid item xs={12}>
               <TextField
                 variant="outlined"
-                label="Title"
+                label={t('title')}
                 name="title"
                 onChange={handleChange}
                 value={event.title}
@@ -58,11 +60,12 @@ const FormSetCalendar = ({
             <Grid item xs={12}>
               <TextField
                 id="datetime-local"
-                label="Date start"
+                label={t('start date')}
                 name="start"
                 type="datetime-local"
                 sx={{ width: 250 }}
                 onChange={handleChange}
+                value={event.start}
                 InputLabelProps={{
                   shrink: true
                 }}
@@ -71,11 +74,12 @@ const FormSetCalendar = ({
             <Grid item xs={12}>
               <TextField
                 id="datetime-local"
-                label="Date end"
+                label={t('end date')}
                 name="end"
                 type="datetime-local"
                 sx={{ width: 250 }}
                 onChange={handleChange}
+                value={event.end}
                 InputLabelProps={{
                   shrink: true
                 }}
@@ -88,7 +92,7 @@ const FormSetCalendar = ({
                 options={servicers}
                 onChange={(event, value) => setType(value)}
                 renderInput={(params) => {
-                  return <TextField {...params} label="Type Service" />;
+                  return <TextField {...params} label={t('type of service')} />;
                 }}
               />
             </Grid>
@@ -100,7 +104,7 @@ const FormSetCalendar = ({
                   setIsAllDay(!isAllDay);
                 }}
                 labelPlacement="start"
-                label="Is All Day:"
+                label={t('all day') + ':'}
               />
             </Grid>
           </Grid>
@@ -112,9 +116,9 @@ const FormSetCalendar = ({
             type="submit"
             disabled={requesting}
           >
-            Submit
+            {t('Submit')}
           </Button>
-          <Button onClick={handleClose}>Cancel</Button>
+          <Button onClick={handleClose}>{t('Cancel')}</Button>
         </DialogActions>
       </form>
     </Dialog>

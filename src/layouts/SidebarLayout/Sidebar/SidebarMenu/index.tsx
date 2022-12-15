@@ -31,6 +31,7 @@ import ChromeReaderModeTwoToneIcon from '@mui/icons-material/ChromeReaderModeTwo
 import WorkspacePremiumTwoToneIcon from '@mui/icons-material/WorkspacePremiumTwoTone';
 import CameraFrontTwoToneIcon from '@mui/icons-material/CameraFrontTwoTone';
 import DisplaySettingsTwoToneIcon from '@mui/icons-material/DisplaySettingsTwoTone';
+import { useTranslation } from 'react-i18next';
 
 const MenuWrapper = styled(Box)(
   ({ theme }) => `
@@ -176,6 +177,7 @@ const SubMenuWrapper = styled(Box)(
 
 function SidebarMenu() {
   const { closeSidebar } = useContext(SidebarContext);
+  const { t } = useTranslation();
 
   return (
     <>
@@ -191,13 +193,13 @@ function SidebarMenu() {
                   to="/overview"
                   startIcon={<DesignServicesTwoToneIcon />}
                 >
-                  Overview
+                  {t('overview')}
                 </Button>
               </ListItem>
             </List>
           </SubMenuWrapper>
         </List>
-        <List
+        {/* <List
           component="div"
           subheader={
             <ListSubheader component="div" disableSticky>
@@ -231,12 +233,12 @@ function SidebarMenu() {
               </ListItem>
             </List>
           </SubMenuWrapper>
-        </List>
+        </List> */}
         <List
           component="div"
           subheader={
             <ListSubheader component="div" disableSticky>
-              Management
+              {t('Management')}
             </ListSubheader>
           }
         >
@@ -250,7 +252,7 @@ function SidebarMenu() {
                   to="/management/service-calendar"
                   startIcon={<TableChartTwoToneIcon />}
                 >
-                  List Service Register
+                  {t('List Service Register')}
                 </Button>
               </ListItem>
               <ListItem component="div">
@@ -261,7 +263,7 @@ function SidebarMenu() {
                   to="/management/preview-calendar"
                   startIcon={<TableChartTwoToneIcon />}
                 >
-                  Calendar preview
+                  {t('Calendar preview')}
                 </Button>
               </ListItem>
             </List>
@@ -271,7 +273,7 @@ function SidebarMenu() {
           component="div"
           subheader={
             <ListSubheader component="div" disableSticky>
-              Accounts
+              {t('Accounts')}
             </ListSubheader>
           }
         >
@@ -285,7 +287,7 @@ function SidebarMenu() {
                   to="/management/profile/details"
                   startIcon={<AccountCircleTwoToneIcon />}
                 >
-                  User Profile
+                  {t('User Profile')}
                 </Button>
               </ListItem>
               <ListItem component="div">
@@ -296,13 +298,13 @@ function SidebarMenu() {
                   to="/management/profile/settings"
                   startIcon={<DisplaySettingsTwoToneIcon />}
                 >
-                  Account Settings
+                  {t('Account Settings')}
                 </Button>
               </ListItem>
             </List>
           </SubMenuWrapper>
         </List>
-        <List
+        {/* <List
           component="div"
           subheader={
             <ListSubheader component="div" disableSticky>
@@ -413,12 +415,12 @@ function SidebarMenu() {
               </ListItem>
             </List>
           </SubMenuWrapper>
-        </List>
+        </List> */}
         <List
           component="div"
           subheader={
             <ListSubheader component="div" disableSticky>
-              Extra Pages
+              {t('Extra Pages')}
             </ListSubheader>
           }
         >
@@ -432,7 +434,7 @@ function SidebarMenu() {
                   to="/status/404"
                   startIcon={<CheckBoxTwoToneIcon />}
                 >
-                  Error 404
+                  {t('Error 404')}
                 </Button>
               </ListItem>
               <ListItem component="div">
@@ -443,7 +445,7 @@ function SidebarMenu() {
                   to="/status/500"
                   startIcon={<CameraFrontTwoToneIcon />}
                 >
-                  Error 500
+                  {t('Error 500')}
                 </Button>
               </ListItem>
               <ListItem component="div">
@@ -454,7 +456,7 @@ function SidebarMenu() {
                   to="/status/coming-soon"
                   startIcon={<ChromeReaderModeTwoToneIcon />}
                 >
-                  Coming Soon
+                  {t('Coming Soon')}
                 </Button>
               </ListItem>
               <ListItem component="div">
@@ -465,7 +467,7 @@ function SidebarMenu() {
                   to="/status/maintenance"
                   startIcon={<WorkspacePremiumTwoToneIcon />}
                 >
-                  Maintenance
+                  {t('Maintenance')}
                 </Button>
               </ListItem>
             </List>
