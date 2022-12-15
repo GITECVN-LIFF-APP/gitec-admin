@@ -13,54 +13,6 @@
   ],
   "events": [
     {
-      "id": 1,
-      "title": "Priority clean",
-      "start": "2022-12-13T16:48:39.122Z",
-      "end": "2022-12-14T16:48:39.122Z",
-      "allDay": true,
-      "type": "clean",
-      "createAt": "2022-03-21T16:48:39.122Z",
-      "updatedAt": "2022-03-22T03:49:25.020Z",
-      "userId": 2,
-      "color": "grey"
-    },
-    {
-      "id": 5,
-      "title": "Priority clean",
-      "start": "2022-12-13T16:48:39.122Z",
-      "end": "2022-12-15T16:48:39.122Z",
-      "allDay": true,
-      "type": "clean",
-      "createAt": "2022-03-21T16:48:39.122Z",
-      "updatedAt": "2022-03-22T03:49:25.020Z",
-      "userId": 2,
-      "color": "green"
-    },
-    {
-      "id": 6,
-      "title": "Priority clean",
-      "start": "2022-12-14T16:48:39.122Z",
-      "end": "2022-12-15T16:48:39.122Z",
-      "type": "clean",
-      "createAt": "2022-03-21T16:48:39.122Z",
-      "updatedAt": "2022-03-22T03:49:25.020Z",
-      "userId": 2,
-      "color": "green"
-    },
-    {
-      "id": 7,
-      "title": "Priority clean",
-      "start": "2022-12-15T16:00:39.122Z",
-      "end": "2022-12-15T16:48:39.122Z",
-      "service": {
-        "serviceName": "name",
-        "serviceId": "1"
-      },
-      "color": "red",
-      "createAt": "2022-03-21T16:48:39.122Z",
-      "updatedAt": "2022-03-22T03:49:25.020Z"
-    },
-    {
       "id": 8,
       "title": "Priority clean",
       "start": "2022-03-21T16:48:39.122Z",
@@ -85,28 +37,14 @@
       "color": "green"
     },
     {
-      "title": "test",
-      "start": "",
-      "end": "",
+      "title": "test123",
+      "start": "2022-12-16T07:51",
+      "end": "2022-12-17T09:51",
       "user_id": 1,
-      "start": "2022-12-13T07:51",
-      "end": "2022-12-13T09:51",
-      "allDay": true,
-      "type": "Clean",
+      "allDay": false,
+      "type": "",
       "color": "blue",
       "id": 2
-    },
-    {
-      "title": "test1",
-      "start": "",
-      "end": "",
-      "user_id": 1,
-      "start": "2022-12-13T08:51",
-      "end": "2022-12-13T09:52",
-      "allDay": false,
-      "type": "Clean",
-      "color": "blue",
-      "id": 3
     }
   ]
 }
