@@ -193,7 +193,7 @@ function SidebarMenu() {
                   to="/overview"
                   startIcon={<DesignServicesTwoToneIcon />}
                 >
-                  {t('overview')}
+                  {t('Overview')}
                 </Button>
               </ListItem>
             </List>
@@ -252,7 +252,7 @@ function SidebarMenu() {
                   to="/management/service-calendar"
                   startIcon={<TableChartTwoToneIcon />}
                 >
-                  {t('List Service Register')}
+                  {t('Registered Service Table')}
                 </Button>
               </ListItem>
               <ListItem component="div">
@@ -263,7 +263,7 @@ function SidebarMenu() {
                   to="/management/preview-calendar"
                   startIcon={<TableChartTwoToneIcon />}
                 >
-                  {t('Calendar preview')}
+                  {t('Calendar Preview')}
                 </Button>
               </ListItem>
             </List>

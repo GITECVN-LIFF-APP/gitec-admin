@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 
 import {
   Box,
@@ -20,6 +20,7 @@ import CloseTwoToneIcon from '@mui/icons-material/CloseTwoTone';
 import HeaderButtons from './Buttons';
 import HeaderUserbox from './Userbox';
 import HeaderMenu from './Menu';
+import i18next from 'i18next';
 
 const HeaderWrapper = styled(Box)(
   ({ theme }) => `
@@ -43,6 +44,12 @@ const HeaderWrapper = styled(Box)(
 function Header() {
   const { sidebarToggle, toggleSidebar } = useContext(SidebarContext);
   const theme = useTheme();
+  const [isToggle, setIsToggle] = useState(true);
+  const handleToggle = () => {
+    setIsToggle(!isToggle);
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+    isToggle ? i18next.changeLanguage('en') : i18next.changeLanguage('ja');
+  };
 
   return (
     <HeaderWrapper
@@ -75,8 +82,8 @@ function Header() {
       <Box display="flex" alignItems="center">
         <FormControlLabel
           value="end"
-          control={<Switch color="primary" />}
-          label="Ja"
+          control={<Switch onClick={handleToggle} color="primary" />}
+          label="En"
           labelPlacement="end"
         />
         <HeaderButtons />

@@ -3,7 +3,7 @@ import PageHeader from './PageHeader';
 import PageTitleWrapper from 'src/components/PageTitleWrapper';
 import { Grid, Container, CircularProgress } from '@mui/material';
 import Footer from 'src/components/Footer';
-import { EVENTS_URL } from 'src/constants/url';
+import { EVENTS_URL, GAS_URL, SERVICES_URL } from 'src/constants/url';
 import { getData } from 'src/helpers/apiHandle';
 import useSWR, { useSWRConfig } from 'swr';
 import ServiceTable from './ServiceTable';
@@ -11,23 +11,37 @@ import { useState } from 'react';
 import FormSetCalendar from 'src/components/FormSetCalendar';
 import { createEvent } from 'src/services/EventService';
 import { useTranslation } from 'react-i18next';
+import { IEvent, IGasStation } from './ServiceActions';
+export interface IService {
+  name: string;
+  id: number;
+  price: string;
+}
+export interface IEventState {
+  title: string;
+  start: string;
+  end: string;
+  user_id: number;
+}
 
 function ApplicationsTransactions() {
   const { t } = useTranslation();
   const { mutate } = useSWRConfig();
   const [open, setOpen] = useState(false);
-  const [servicers, setServicers] = useState(['Clean', 'Polish']);
   const [isAllDay, setIsAllDay] = useState(false);
-  const [type, setType] = useState('');
+  const [service, setService] = useState<IService>();
+  const [gasStation, setGasStation] = useState<IGasStation>();
   const [requesting, setRequesting] = useState<boolean>(false);
-  const [event, setEvent] = useState({
+  const [event, setEvent] = useState<IEventState>({
     title: '',
-    start_date: '',
-    end_date: '',
+    start: '',
+    end: '',
     user_id: 1
   });
 
-  const { data: events } = useSWR<[]>(EVENTS_URL, getData);
+  const { data: events } = useSWR<IEvent[]>(EVENTS_URL, getData);
+  const { data: services } = useSWR<IService[]>(SERVICES_URL, getData);
+  const { data: gasSations } = useSWR<[]>(GAS_URL, getData);
   const handleClickOpenDialog = () => {
     setOpen(true);
   };
@@ -49,8 +63,9 @@ function ApplicationsTransactions() {
     const data = {
       ...event,
       allDay: isAllDay,
-      type: type,
-      color: 'blue'
+      color: 'blue',
+      serviceId: service.id,
+      gasStationId: gasStation.id
     };
     try {
       const response = await createEvent(data);
@@ -64,11 +79,10 @@ function ApplicationsTransactions() {
       setOpen(false);
       setEvent({
         title: '',
-        start_date: '',
-        end_date: '',
+        start: '',
+        end: '',
         user_id: 1
       });
-      setType('');
       setRequesting(false);
     } catch (error) {
       // errorDispatch({
@@ -107,8 +121,10 @@ function ApplicationsTransactions() {
         handleSubmit={handleSubmit}
         event={event}
         handleChange={handleChange}
-        servicers={servicers}
-        setType={setType}
+        setGasStation={setGasStation}
+        servicers={services}
+        gasStations={gasSations}
+        setService={setService}
         setIsAllDay={setIsAllDay}
         isAllDay={isAllDay}
         requesting={requesting}

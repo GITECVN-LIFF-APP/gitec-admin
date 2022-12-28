@@ -13,17 +13,8 @@ import {
   Theme
 } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import React, { Dispatch, SetStateAction } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { USERS_URL } from 'src/constants/url';
-import {
-  IEventState,
-  IService
-} from 'src/content/applications/ServicesCalendar';
-import {
-  IEvent,
-  IGasStation
-} from 'src/content/applications/ServicesCalendar/ServiceActions';
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -35,45 +26,25 @@ const useStyles = makeStyles((theme: Theme) => ({
     }
   }
 }));
-type FormSetCalendarProps = {
-  open: boolean;
-  handleClose: () => void;
-  handleSubmit: (e) => void;
-  event?: IEventState;
-  handleChange: (e) => void;
-  servicers: IService[];
-  setService: Dispatch<SetStateAction<IService>>;
-  isAllDay: boolean;
-  setIsAllDay: Dispatch<SetStateAction<boolean>>;
-  requesting: boolean;
-  setGasStation: Dispatch<SetStateAction<IGasStation>>;
-  gasStations: IGasStation[];
-  gasStation?: IGasStation;
-  service?: IService;
-};
 
-const FormSetCalendar = ({
+const FormSetDateOff = ({
   open,
   handleClose,
   handleSubmit,
   event,
   handleChange,
   servicers,
-  setService,
+  setType,
   isAllDay,
   setIsAllDay,
-  requesting,
-  setGasStation,
-  gasStations,
-  gasStation,
-  service
-}: FormSetCalendarProps) => {
+  requesting
+}) => {
   const { t } = useTranslation();
   const classes = useStyles();
 
   return (
     <Dialog open={open} onClose={handleClose} maxWidth="xl">
-      <DialogTitle>{t('Set calendar')}</DialogTitle>
+      <DialogTitle>{t('Set Date Off')}</DialogTitle>
       <form className={classes.root} onSubmit={handleSubmit}>
         <DialogContent>
           <Grid container spacing={3}>
@@ -117,28 +88,12 @@ const FormSetCalendar = ({
             <Grid item xs={12}>
               <Autocomplete
                 disablePortal
-                defaultValue={service}
+                value={event.type}
                 id="combo-box-demo"
                 options={servicers}
-                onChange={(event, value: IService) => setService(value)}
-                getOptionLabel={(option: { name: string }) => option.name}
+                onChange={(event, value) => setType(value)}
                 renderInput={(params) => {
                   return <TextField {...params} label={t('Type of Service')} />;
-                }}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <Autocomplete
-                disablePortal
-                defaultValue={gasStation}
-                id="combo-box-demo"
-                options={gasStations}
-                onChange={(event, value: IGasStation) => setGasStation(value)}
-                getOptionLabel={(option: { name: string }) => option.name}
-                renderInput={(params) => {
-                  return (
-                    <TextField {...params} label={t('Gas Station Branch')} />
-                  );
                 }}
               />
             </Grid>
@@ -171,4 +126,4 @@ const FormSetCalendar = ({
   );
 };
 
-export default FormSetCalendar;
+export default FormSetDateOff;

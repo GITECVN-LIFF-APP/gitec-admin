@@ -11,25 +11,22 @@ const ServiceTable = ({ events }) => {
   const [rowId, setRowId] = useState(null);
   const rows = events === undefined ? [] : events;
 
-  const columns = useMemo(
-    () => [
-      { field: 'id', headerName: 'Id', width: 100 },
-      { field: 'title', headerName: t('title'), width: 120 },
-      { field: 'start', headerName: t('start date'), width: 250 },
-      { field: 'end', headerName: t('end date'), width: 250 },
-      { field: 'type', headerName: t('type of service'), width: 220 },
-      { field: 'allDay', headerName: t('all day') },
-      {
-        field: 'actions',
-        headerName: t('actions'),
-        type: 'actions',
-        renderCell: (params) => (
-          <ServiceActions {...{ params, rowId, setRowId }} />
-        )
-      }
-    ],
-    [rowId]
-  );
+  const columns = [
+    { field: 'id', headerName: 'Id', width: 100 },
+    { field: 'title', headerName: t('Title'), width: 120 },
+    { field: 'start', headerName: t('Start Date'), width: 250 },
+    { field: 'end', headerName: t('End Date'), width: 250 },
+    { field: 'type', headerName: t('Type of Service'), width: 220 },
+    { field: 'allDay', headerName: t('All Day') },
+    {
+      field: 'actions',
+      headerName: t('Actions'),
+      type: 'actions',
+      renderCell: (params) => (
+        <ServiceActions {...{ params, rowId, setRowId }} />
+      )
+    }
+  ];
 
   if (!events) return <CircularProgress />;
   return (
