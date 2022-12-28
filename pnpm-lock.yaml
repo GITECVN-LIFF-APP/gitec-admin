@@ -3,6 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@emotion/react': 11.9.0
   '@emotion/styled': 11.8.1
+  '@fullcalendar/core': ^6.0.0
   '@fullcalendar/daygrid': ^5.11.3
   '@fullcalendar/interaction': ^5.11.3
   '@fullcalendar/react': ^5.11.3
@@ -60,6 +61,7 @@ specifiers:
 dependencies:
   '@emotion/react': 11.9.0_adlholpkqbiq5amp2fy4vkqcli
   '@emotion/styled': 11.8.1_gfvpbmoq72alm3cuttd34setiq
+  '@fullcalendar/core': 6.0.0
   '@fullcalendar/daygrid': 5.11.3
   '@fullcalendar/interaction': 5.11.3
   '@fullcalendar/react': 5.11.3_sfoxds7t5ydpegc3knd667wn6m
@@ -1885,6 +1887,12 @@ packages:
     resolution: {integrity: sha512-welVwyfQOXQQGfDwBMSfYEPbiO1cPfUD+C7jd3ZoweJR+dSO11ddFugxIQ7dGfABAGZ63oq/+LW9FsmAJezVNg==}
     dependencies:
       tslib: 2.4.1
+    dev: false
+
+  /@fullcalendar/core/6.0.0:
+    resolution: {integrity: sha512-0lseac4/yJQhT9QjPGlqwEsZsoD0kKjuUI9KNUWMXqBPcK7Gk1pXJyP2Np7k9aqU5yLF7+pKp7fYR4YPiy++ew==}
+    dependencies:
+      preact: 10.11.3
     dev: false
 
   /@fullcalendar/daygrid/5.11.3:
@@ -8882,6 +8890,10 @@ packages:
       nanoid: 3.3.4
       picocolors: 1.0.0
       source-map-js: 1.0.2
+    dev: false
+
+  /preact/10.11.3:
+    resolution: {integrity: sha512-eY93IVpod/zG3uMF22Unl8h9KkrcKIRs2EGar8hwLZZDU1lkjph303V9HZBwufh2s736U6VXuhD109LYqPoffg==}
     dev: false
 
   /prefix-style/2.0.1:

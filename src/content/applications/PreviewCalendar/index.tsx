@@ -13,8 +13,12 @@ const index = () => {
     console.log('1', info);
   };
 
+  const handleDateClick = (arg) => {
+    // bind with an arrow function
+    alert(arg.dateStr);
+  };
+
   const { data: events } = useSWR<[]>(EVENTS_URL, getData);
-  console.log('event', events);
 
   if (!events) return <CircularProgress />;
   return (
@@ -33,11 +37,12 @@ const index = () => {
         nowIndicator={false}
         allDayText="All Day"
         locale="ja"
-        timeZone="UTC"
+        timeZone="local"
         events={events}
-        eventClick={handleClick}
+        // eventClick={handleClick}
         // scrollTime={'08:00:00'}
         expandRows={true}
+        dateClick={handleDateClick}
       />
     </>
   );

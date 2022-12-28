@@ -7,6 +7,7 @@ import BaseLayout from 'src/layouts/BaseLayout';
 
 import SuspenseLoader from 'src/components/SuspenseLoader';
 import LoginPage from './content/authentication/Login';
+import Crypto from 'src/content/dashboards/Crypto';
 
 const Loader = (Component) => (props) =>
   (
@@ -21,7 +22,7 @@ const Overview = Loader(lazy(() => import('src/content/overview')));
 
 // Dashboards
 
-const Crypto = Loader(lazy(() => import('src/content/dashboards/Crypto')));
+// const Crypto = Loader(lazy(() => import('src/content/dashboards/Crypto')));
 
 // Applications
 

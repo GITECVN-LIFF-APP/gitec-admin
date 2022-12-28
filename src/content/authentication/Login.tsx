@@ -17,6 +17,9 @@ const theme = createTheme();
 import { useFormik } from 'formik';
 import LoginForm from 'src/components/LoginForm';
 import { AppContext } from 'src/AppProvider';
+import { USERS_URL } from 'src/constants/url';
+import { getData } from 'src/helpers/apiHandle';
+import useSWR, { useSWRConfig } from 'swr';
 
 const validationSchema = yup.object({
   email: yup
@@ -28,9 +31,14 @@ const validationSchema = yup.object({
     .min(8, 'Password should be of minimum 8 characters length')
     .required('Password is required')
 });
+export interface IUser {
+  email: string;
+  password: string;
+}
 
 const LoginPage = () => {
   const { state, addMessage } = useContext(AppContext);
+  const { data: users } = useSWR<IUser[]>(USERS_URL, getData);
   let navigate: NavigateFunction = useNavigate();
   const [requesting, setRequesting] = useState<boolean>(false);
 
@@ -44,24 +52,29 @@ const LoginPage = () => {
       setRequesting(true);
 
       try {
-        const response: { data; status } = await login(values);
-        console.log(status);
-        localStorage.setItem(
-          'accessToken',
-          JSON.stringify(response.data.accessToken)
+        const checkUser = users.find(
+          (user) =>
+            user.email === values.email && user.password === values.password
         );
-        localStorage.setItem('userSession', JSON.stringify(response.data.user));
-        navigate('/');
-        resetForm();
-        setRequesting(false);
+        // const response: { data; status } = await login(values);
+        // localStorage.setItem(
+        //   'accessToken',
+        //   JSON.stringify(response.data.accessToken)
+        // );
+        // localStorage.setItem('userSession', JSON.stringify(response.data.user));
+        if (checkUser) {
+          navigate('/');
+          resetForm();
+          setRequesting(false);
+        }
       } catch (error) {
-        addMessage('sai', 'error');
-        // console.log('check', state);
+        addMessage('sai', error);
         setRequesting(false);
       }
     }
   });
 
+  if (!users) return <h1>loading...</h1>;
   return (
     <ThemeProvider theme={theme}>
       <Grid container component="main" sx={{ height: '100vh' }}>

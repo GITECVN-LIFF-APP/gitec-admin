@@ -4,25 +4,35 @@ import { Delete, Edit } from '@mui/icons-material';
 import { mutate } from 'swr';
 import { useState, lazy } from 'react';
 import FormSetCalendar from 'src/components/FormSetCalendar';
-import { EVENTS_URL } from 'src/constants/url';
+import { EVENTS_URL, GAS_URL, SERVICES_URL } from 'src/constants/url';
 import { updateEvent, deleteEvent } from 'src/services/EventService';
 import { getData } from 'src/helpers/apiHandle';
 import useSWR, { useSWRConfig } from 'swr';
 import DeleteDialog from 'src/components/DeleteDialog';
-interface IEvent {
+import { IService } from '.';
+export interface IEvent {
+  id: string;
   title: string;
   start: string;
   end: string;
   user_id: number;
-  type: string;
+  serviceId: number;
   allDay: boolean;
+  gasStationId: string;
+}
+
+export interface IGasStation {
+  id: string;
+  name: string;
+  address: string;
+  phone: string;
 }
 
 const ServiceActions = ({ params, rowId, setRowId }) => {
   const [open, setOpen] = useState(false);
-  const [servicers, setServicers] = useState(['Clean', 'Polish']);
   const [isAllDay, setIsAllDay] = useState(false);
-  const [type, setType] = useState('');
+  const [service, setService] = useState<IService>();
+  const [gasStation, setGasStation] = useState<IGasStation>();
   const [requesting, setRequesting] = useState<boolean>(false);
   const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
   const [event, setEvent] = useState({
@@ -38,13 +48,17 @@ const ServiceActions = ({ params, rowId, setRowId }) => {
     getData
   );
 
+  const { data: servicers } = useSWR<IService[]>(SERVICES_URL, getData);
+
+  const { data: gasStations } = useSWR<IGasStation[]>(GAS_URL, getData);
+
   const handleOpenEditModal = () => {
     setOpen(true);
     setId(params.id);
   };
 
   useEffect(() => {
-    if (!id || !eventFetch) {
+    if (!id || !eventFetch || !servicers || !gasStations) {
       return;
     } else {
       setEvent({
@@ -54,7 +68,17 @@ const ServiceActions = ({ params, rowId, setRowId }) => {
         user_id: eventFetch.user_id
       });
       setIsAllDay(eventFetch.allDay);
-      setType(eventFetch.type);
+      setService(
+        servicers.find((servicer) => servicer.id === eventFetch.serviceId)
+      );
+      setGasStation(
+        gasStations.find(
+          (gasStation) => gasStation.id == eventFetch.gasStationId
+        )
+      );
+
+      // const newM= gasStations.findIndex(g=>g.)
+      // setGasStation(gasStations.filter(gasStation => gasStation.)
     }
   }, [eventFetch, id]);
 
@@ -75,8 +99,9 @@ const ServiceActions = ({ params, rowId, setRowId }) => {
     const data = {
       ...event,
       allDay: isAllDay,
-      type: type,
-      color: 'blue'
+      servicerId: service?.id,
+      color: 'blue',
+      gasStationId: gasStation?.id
     };
     try {
       const response = await updateEvent(data, id);
@@ -88,7 +113,6 @@ const ServiceActions = ({ params, rowId, setRowId }) => {
       // });
       mutate(EVENTS_URL);
       setOpen(false);
-      setType('');
       setRequesting(false);
     } catch (error) {
       // errorDispatch({
@@ -131,10 +155,14 @@ const ServiceActions = ({ params, rowId, setRowId }) => {
         event={event}
         handleChange={handleChange}
         servicers={servicers}
-        setType={setType}
+        setService={setService}
         setIsAllDay={setIsAllDay}
         isAllDay={isAllDay}
         requesting={requesting}
+        gasStations={gasStations}
+        gasStation={gasStation}
+        setGasStation={setGasStation}
+        service={service}
       />
       <DeleteDialog
         open={openDeleteDialog}

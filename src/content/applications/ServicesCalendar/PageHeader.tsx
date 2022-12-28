@@ -10,7 +10,7 @@ function PageHeader({ handleClickOpenDialog }) {
     <Grid container justifyContent="space-between" alignItems="center">
       <Grid item>
         <Typography variant="h3" component="h3" gutterBottom>
-          {t('list of users registered for the service')}
+          {t('List of Users Registered the Service')}
         </Typography>
       </Grid>
       <Grid item>
@@ -20,8 +20,16 @@ function PageHeader({ handleClickOpenDialog }) {
           startIcon={<AddTwoToneIcon fontSize="small" />}
           onClick={handleClickOpenDialog}
         >
-          {t('create calendar')}
+          {t('Create Calendar')}
         </Button>
+        {/* <Button
+          sx={{ mt: { xs: 2, md: 0 }, ml: { xs: 2, md: 1 } }}
+          variant="contained"
+          startIcon={<AddTwoToneIcon fontSize="small" />}
+          onClick={handleClickOpenDialog}
+        >
+          {t('Create Date Off')}
+        </Button> */}
       </Grid>
     </Grid>
   );
