@@ -92,11 +92,11 @@ function HeaderSearch() {
 
   return (
     <>
-      <Tooltip arrow title="Search">
+      {/* <Tooltip arrow title="Search">
         <IconButton color="primary" onClick={handleClickOpen}>
           <SearchTwoToneIcon />
         </IconButton>
-      </Tooltip>
+      </Tooltip> */}
 
       <DialogWrapper
         open={open}

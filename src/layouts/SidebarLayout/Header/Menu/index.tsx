@@ -86,7 +86,7 @@ function HeaderMenu() {
           }
         }}
       >
-        <List disablePadding component={Box} display="flex">
+        {/* <List disablePadding component={Box} display="flex">
           <ListItem
             classes={{ root: 'MuiListItem-indicators' }}
             button
@@ -127,7 +127,7 @@ function HeaderMenu() {
               }
             />
           </ListItem>
-        </List>
+        </List> */}
       </ListWrapper>
       <Menu anchorEl={ref.current} onClose={handleClose} open={isOpen}>
         <MenuItem sx={{ px: 3 }} component={NavLink} to="/overview">
