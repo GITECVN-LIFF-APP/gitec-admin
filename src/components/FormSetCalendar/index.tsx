@@ -73,7 +73,7 @@ const FormSetCalendar = ({
 
   return (
     <Dialog open={open} onClose={handleClose} maxWidth="xl">
-      <DialogTitle>{t('Set calendar')}</DialogTitle>
+      <DialogTitle>{t('Calendar Setting')}</DialogTitle>
       <form className={classes.root} onSubmit={handleSubmit}>
         <DialogContent>
           <Grid container spacing={3}>

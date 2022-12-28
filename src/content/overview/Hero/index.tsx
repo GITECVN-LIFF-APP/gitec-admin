@@ -96,7 +96,7 @@ function Hero() {
           </TypographyH2>
           <Button
             component={RouterLink}
-            to="/dashboards/crypto"
+            to="/management/preview-calendar"
             size="large"
             variant="contained"
           >
