@@ -69,13 +69,13 @@ function Sidebar() {
               src="/img_logo.png"
             ></Box>
           </Box>
-          <Divider
+          {/* <Divider
             sx={{
               mt: theme.spacing(3),
               mx: theme.spacing(2),
               background: theme.colors.alpha.trueWhite[10]
             }}
-          />
+          /> */}
           <SidebarMenu />
         </Scrollbar>
         <Divider
@@ -107,11 +107,13 @@ function Sidebar() {
               <Box
                 mx={2}
                 sx={{
-                  width: 52
+                  width: 52,
+                  minHeight: 70,
+                  minWidth: 250
                 }}
-              >
-                <Logo />
-              </Box>
+                component="img"
+                src="/img_logo.png"
+              ></Box>
             </Box>
             <Divider
               sx={{
